@@ -9,6 +9,7 @@ function App() {
   const myVideo = useRef(null);
   const friendVideo = useRef(null);
 
+  // for video call
   const [myPeer2, setMyPeer2] = useState(new Peer());
   const myScreen = useRef(null);
   const [screenID, setScreenID] = useState("");
@@ -66,6 +67,8 @@ function App() {
   }, []);
   console.log("peerID", myPeerID);
   console.log("screenID", myPeer2.id);
+
+
   function callTheReceiver() {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
@@ -92,19 +95,32 @@ function App() {
 
   return (
     <div>
-      <div>
-        <video
-          style={{ width: "400px", height: "400px", border: "1px solid" }}
-          ref={myVideo}
-        ></video>
-        <video
-          style={{ width: "400px", height: "400px", border: "1px solid" }}
-          ref={myScreen}
-        ></video>
-        <video
-          style={{ width: "400px", height: "400px", border: "1px solid" }}
-          ref={friendVideo}
-        ></video>
+      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}>
+        <main>
+
+          <h1>My Video</h1>
+          <video
+            style={{ width: "400px", height: "400px", border: "1px solid" }}
+            ref={myVideo}
+          ></video>
+        </main>
+        <main>
+
+          <h1>Screen</h1>
+          <video
+            style={{ width: "400px", height: "400px", border: "1px solid" }}
+            ref={myScreen}
+          ></video>
+        </main>
+
+        <main>
+
+          <h1>Friend Video</h1>
+          <video
+            style={{ width: "400px", height: "400px", border: "1px solid" }}
+            ref={friendVideo}
+          ></video>
+        </main>
       </div>
       <input
         type="text"
