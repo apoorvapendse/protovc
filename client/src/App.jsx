@@ -94,48 +94,60 @@ function App() {
   }
 
   return (
-    <div>
-      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}>
-        <main>
+    <div style={{display:"flex",gap:"2rem"}}>
 
-          <h1>My Video</h1>
+      <div style={{
+        display:"flex",
+        flexDirection:"column",
+        
+}}>
+      <main style={{display:"flex",flexDirection:"column"}}>
+
+
+
+          <small>My Video</small>
           <video
             style={{ width: "400px", height: "400px", border: "1px solid" }}
             ref={myVideo}
           ></video>
         </main>
-        <main>
 
-          <h1>Screen</h1>
-          <video
-            style={{ width: "400px", height: "400px", border: "1px solid" }}
-            ref={myScreen}
-          ></video>
-        </main>
+        <small>Friend Video</small>
 
-        <main>
-
-          <h1>Friend Video</h1>
+        <main style={{display:"flex",flexDirection:"column"}}>
           <video
             style={{ width: "400px", height: "400px", border: "1px solid" }}
             ref={friendVideo}
           ></video>
         </main>
+
       </div>
+
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+
+      <main style={{display:"flex",flexDirection:"column"}}>
+
+        <small>Screen</small>
+        <video
+          style={{ width: "70vw", height: "80vh", border: "1px solid" }}
+          ref={myScreen}
+          ></video>
+      </main>
       <input
         type="text"
         placeholder="Enter Receiver Peer ID"
         value={receiverID}
         onChange={(e) => setReceiverID(e.target.value)}
-      />
+        />
       <button onClick={callTheReceiver}>Call</button>
       <input
         type="text"
         placeholder="Enter Receiver Screen ID"
         // value={receiverID}
         onChange={(e) => setScreenID(e.target.value)}
-      />
+        />
       <button onClick={shareScreen}>Share</button>
+        </div>
     </div>
   );
 }
