@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Peer } from "peerjs";
+import CodeEditorComponent from './CodeEditorComponent';
 
 function App() {
   const [myPeerID, setMyPeerID] = useState(null);
@@ -94,14 +95,15 @@ function App() {
   }
 
   return (
-    <div style={{display:"flex",gap:"2rem"}}>
+    <div>
+    <div style={{ display: "flex", gap: "2rem" }}>
 
       <div style={{
-        display:"flex",
-        flexDirection:"column",
-        
-}}>
-      <main style={{display:"flex",flexDirection:"column"}}>
+        display: "flex",
+        flexDirection: "column",
+
+      }}>
+        <main style={{ display: "flex", flexDirection: "column" }}>
 
 
 
@@ -114,7 +116,7 @@ function App() {
 
         <small>Friend Video</small>
 
-        <main style={{display:"flex",flexDirection:"column"}}>
+        <main style={{ display: "flex", flexDirection: "column" }}>
           <video
             style={{ width: "400px", height: "400px", border: "1px solid" }}
             ref={friendVideo}
@@ -123,31 +125,35 @@ function App() {
 
       </div>
 
-      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 
-      <main style={{display:"flex",flexDirection:"column"}}>
+        <main style={{ display: "flex", flexDirection: "column" }}>
 
-        <small>Screen</small>
-        <video
-          style={{ width: "70vw", height: "80vh", border: "1px solid" }}
-          ref={myScreen}
+          <small>Screen</small>
+          <video
+            style={{ width: "70vw", height: "80vh", border: "1px solid" }}
+            ref={myScreen}
           ></video>
-      </main>
-      <input
-        type="text"
-        placeholder="Enter Receiver Peer ID"
-        value={receiverID}
-        onChange={(e) => setReceiverID(e.target.value)}
+        </main>
+        <input
+          type="text"
+          placeholder="Enter Receiver Peer ID"
+          value={receiverID}
+          onChange={(e) => setReceiverID(e.target.value)}
         />
-      <button onClick={callTheReceiver}>Call</button>
-      <input
-        type="text"
-        placeholder="Enter Receiver Screen ID"
-        // value={receiverID}
-        onChange={(e) => setScreenID(e.target.value)}
+        <button onClick={callTheReceiver}>Call</button>
+        <input
+          type="text"
+          placeholder="Enter Receiver Screen ID"
+          // value={receiverID}
+          onChange={(e) => setScreenID(e.target.value)}
         />
-      <button onClick={shareScreen}>Share</button>
-        </div>
+        <button onClick={shareScreen}>Share</button>
+      </div>
+    </div>
+    <div className="CodeEditor">
+    <CodeEditorComponent />
+    </div>
     </div>
   );
 }
